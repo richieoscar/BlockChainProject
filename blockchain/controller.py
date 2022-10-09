@@ -15,8 +15,18 @@ def get_chains():
 
 @app.route('/mine-block', methods=['GET'])
 def mine_block():
-    logging.info("Inside- mineBlock() controoler")
+    logging.info("Inside- mineBlock() controller")
     response = serv.mine_block()
+    return jsonify(response), 200
+
+
+@app.route('/validate-chain', methods=['GET'])
+def validate_chain():
+    is_valid = serv.validate_chain()
+    if is_valid:
+        response = {'message': 'All good. The Blockchain is valid.'}
+    else:
+        response = {'message': 'Houston, we have a problem. The Blockchain is not valid.'}
     return jsonify(response), 200
 
 
