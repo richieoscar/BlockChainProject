@@ -8,7 +8,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 serv = rich_coin_service.RichCoinService()
 
 
-@app.route('/chains', methods=['GET'])
+@app.route('/chain', methods=['GET'])
 def get_chains():
     return jsonify(serv.get_chains()), 200
 
@@ -63,7 +63,7 @@ def replace_chain():
 
 
 def run():
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)
 
 
 if __name__ == '__main__':

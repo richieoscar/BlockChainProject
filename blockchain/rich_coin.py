@@ -40,7 +40,7 @@ class BlockChain:
             "previous_hash": previous_hash,
             "transactions": self._transactions
         }
-        self._transactions.clear()
+        self._transactions = []
         self._chain.append(block)
         return block
 
@@ -122,7 +122,7 @@ class BlockChain:
         max_length = len(self._chain)
         # make request to get chain
         for node in network:
-            response = requests.get(f"http://{node}/get-chain")
+            response = requests.get(f"http://{node}/chain")
             if response.status_code == 200:
                 chain = response.json()["chain"]
                 length = response.json()["length"]

@@ -51,3 +51,6 @@ class RichCoinService:
 
     def validate_chain(self):
         return self._blockChain.is_chain_valid()
+
+    def replace_chain(self):
+        return self._blockChain.replace_chain()
